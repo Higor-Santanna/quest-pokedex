@@ -1,8 +1,10 @@
 import { AppRoutes } from './pages/routes'
+import { GlobalStyle } from './reset-style/resetStyle'; 
 
 function App() {
   return (
-    <div>
+    <div> 
+      <GlobalStyle />
       <AppRoutes />
     </div>
   );

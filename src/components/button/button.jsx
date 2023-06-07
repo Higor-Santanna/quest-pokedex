@@ -1,12 +1,8 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({setOffset, offset}) => {
     return (
-        <div>
-            <button>
-                <p>Carregar mais</p>
-            </button>
-        </div>
+        <button onClick={() => setOffset(offset + 10)}>Carregar mais</button>
     )
 }
 

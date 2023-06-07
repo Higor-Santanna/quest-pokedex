@@ -1,12 +1,11 @@
 import { Home } from "../components/PokemonList/pokemonLits"
-import { Button } from "../components/button/button"
-
+import { Header } from "../components/header"
 
 const AllPokemons = () => {
     return(
         <div>
-            <Home />
-            <Button />
+            <Header />
+            <Home /> 
         </div>
     )
 }
