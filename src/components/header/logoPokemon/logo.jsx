@@ -1,10 +1,11 @@
-import styled from "styled-components";
+import React from 'react'
+import { Img } from "./style";
+import LogoPokemon from "../../../images/pokemon.png"
 
-const Img = styled.img`
-width: 150px;
-
-@media(max-width: 320px){
-    width: 100px;
+const Logo = () => {
+    return(
+        <Img src={LogoPokemon} alt="Logo do pokemon" ></Img>
+    )
 }
-`
-export { Img }
+
+export { Logo }

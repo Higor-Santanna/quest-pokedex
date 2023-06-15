@@ -1,12 +1,11 @@
 import { AppRoutes } from './pages/routes'
-import { GlobalStyle } from './reset-style/resetStyle'; 
+import { ThemeProvider } from './styles/themes';
 
 function App() {
   return (
-    <div> 
-      <GlobalStyle />
+    <ThemeProvider> 
       <AppRoutes />
-    </div>
+    </ThemeProvider>
   );
 }
 

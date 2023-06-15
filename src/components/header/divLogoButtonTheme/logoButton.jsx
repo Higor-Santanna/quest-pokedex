@@ -1,23 +1,15 @@
 import styled from "styled-components";
+import { themes } from "../../../styles/themes";
 
 const DivLogoAndButton = styled.div`
 display: flex;
 width: 100%;
 justify-content: space-between;
-padding: 20px 25px;
-background-color: hsl(197, 100%, 84%);
+background-color: ${themes.light.backgroudSecudary};
+padding: 20px 55px;
 
-button{
-    border: none;
-    cursor: pointer;
-    color: hsl(200, 15%, 8%);
-    font-size: 14px;
-    font-weight: 600;
-    background-color: hsl(197, 100%, 84%);
-}
-
-button i{
-    margin-right: 3px;
+@media(max-width: 414px){
+    padding: 20px 30px;
 }
 `
 
