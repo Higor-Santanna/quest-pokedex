@@ -5,7 +5,7 @@ const Input = (props) => {
         <input 
             type="text" 
             placeholder='look for your pokemon...'
-            onChange={(e) => props(e.target.value)}/>
+            onChange={(e) => props.setInput(e.target.value)}/>
     )
 }
 

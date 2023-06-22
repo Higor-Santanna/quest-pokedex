@@ -14,6 +14,7 @@ const Home = () => {
 
     const [offset, setOffset] = useState(0);
     const [listPokemons, setListPokemons] = useState([]);
+    const [input, setInput] = useState('')
 
     const getListPokemons = async (offset) => {
         const linkPokemons = `${baseUrl}/pokemon?limit=10&offset=${offset}`
@@ -37,7 +38,7 @@ const Home = () => {
         getListPokemons(offset)
     }, [offset])
 
-
+    console.log(input)
     return (
         <>
             <header>
@@ -46,7 +47,7 @@ const Home = () => {
                     <ButtonTheme></ButtonTheme>
                 </DivLogoAndButton>
                 <DivFilterAndSearch>
-                    <Input />
+                    <Input input={input} setInput={setInput}/>
                     <select name='Tipo'>
                         <option value="">Select by type</option>
                         <option value="">Selecione</option>

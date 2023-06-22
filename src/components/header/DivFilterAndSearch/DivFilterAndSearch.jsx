@@ -8,19 +8,20 @@ justify-content: space-between;
 padding: 20px 55px;
 
 input{
-    background-color: ${themes.light.backgroudSecudary};
+    background-color: ${props => props.theme.backgroundSecudary};
     border: none;
     border-radius: 3px;
     width: 280px;
     height: 35px;
-    padding: 10px
+    padding: 10px;
+    color: white;
 }
 
 select{
-    background-color: ${themes.light.backgroudSecudary};
+    background-color: ${props => props.theme.backgroundSecudary};
     border: 0;
     border-radius: 3px;
-    color: ${themes.light.textColor};
+    color: ${props => props.theme.textColor};
     width: 120px;
     font-weight: 300;
     font-size: 13px;

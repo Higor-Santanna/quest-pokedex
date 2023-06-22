@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Nunito Sans', sans-serif;
+    background-color: ${props => props.theme.backgroundPrimary};
 }
 
 ul{

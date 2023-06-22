@@ -5,7 +5,7 @@ const DivLogoAndButton = styled.div`
 display: flex;
 width: 100%;
 justify-content: space-between;
-background-color: ${themes.light.backgroudSecudary};
+background-color: ${props => props.theme.backgroundSecudary};
 padding: 20px 55px;
 
 @media(max-width: 414px){

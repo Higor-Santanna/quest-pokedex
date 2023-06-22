@@ -1,28 +1,31 @@
 import { createContext, useState } from "react";
+import { ThemeProvider } from "styled-components";
 
 export const themes = {
     light: {
-        backgroudPrimary:  '#f5f5f5',
-        backgroudSecudary: 'hsl(197, 100%, 84%)',
+        backgroundPrimary:  '#f5f5f5',
+        backgroundSecudary: 'hsl(197, 100%, 29%)',
         textColor: 'hsl(200, 15%, 8%)'
     },
 
     dark: {
-        backgroudPrimary:  'hsl(207, 26%, 17%)',
-        backgroudSecudary: 'hsl(209, 23%, 22%)',
+        backgroundPrimary:  'hsl(207, 26%, 17%)',
+        backgroundSecudary: 'hsl(209, 23%, 22%)',
         textColor: 'hsl(0, 0%, 100%)'
     }
 }
 
 export const ThemeContext = createContext({})
 
-export const ThemeProvider = props => {
+export const CustomThemeProvider = props => {
     const [theme, setTheme] = useState(themes.light)
 
     return(
         <ThemeContext.Provider value={{theme, setTheme
         }}>
-            {props.children}
+            <ThemeProvider theme={theme}>
+                {props.children}
+            </ThemeProvider>
         </ThemeContext.Provider>
     )
 }
