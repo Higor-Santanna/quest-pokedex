@@ -1,18 +1,15 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext, themes } from "../../styles/themes";
+import React, { useContext } from "react";
+import { ThemeContext} from "../../styles/themes";
+import { Themes } from "../../styles/themes/theme"
 import { Button } from "./style";
 
 export const ButtonTheme = () => {
-    // const { theme, setTheme } = useContext(ThemeContext)
-    const [ theme, setTheme ] = useState('light')
-
-    // console.log('ThemeTogglerButton themes', theme)
+    const { theme, toggleTheme } = useContext(ThemeContext)
     
     return (
         <>
-            <Button onClick={() => setTheme(theme === themes.light ? themes.dark : themes.light)}> 
-                    {theme === themes.light ? (<i class="fa-solid fa-sun"></i>) : (<i class="fa-solid fa-moon"></i>)}
-                    {theme === themes.light ? (<p>Dark Mode</p>) : (<p>Light Mode</p>)}
+            <Button onClick={toggleTheme}> 
+                    {theme === Themes.light ? (<i class="fa-solid fa-sun"><p>Dark Mode</p></i>) : (<i class="fa-solid fa-moon"><p>Light Mode</p></i>)}
             </Button>
         </>
     )

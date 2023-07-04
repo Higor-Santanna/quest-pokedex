@@ -21,15 +21,22 @@ const Home = () => {
         const response = await fetch(linkPokemons)
         const data = await response.json()
 
+        console.log(data)
+        
         const namesPokemon = data.results.map(function (pokemon) {
             return pokemon.name
         })
+
+        console.log(namesPokemon)
 
         const pokemonList = namesPokemon.map(
             async (pokemon) => await getDataPokemon(pokemon)
         )
 
+        console.log(pokemonList)
+
         const list = await Promise.all(pokemonList)
+
         console.log(list)
         setListPokemons([...listPokemons, ...list])
     }
@@ -38,7 +45,7 @@ const Home = () => {
         getListPokemons(offset)
     }, [offset])
 
-    console.log(input)
+    
     return (
         <>
             <header>
@@ -47,7 +54,10 @@ const Home = () => {
                     <ButtonTheme></ButtonTheme>
                 </DivLogoAndButton>
                 <DivFilterAndSearch>
-                    <Input input={input} setInput={setInput}/>
+                    <div>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <Input input={input} setInput={setInput}/>
+                    </div>
                     <select name='Tipo'>
                         <option value="">Select by type</option>
                         <option value="">Selecione</option>
@@ -61,8 +71,9 @@ const Home = () => {
                 <Ul>
                     {listPokemons.map(pokemon => {
                         return (
-                            <Li key={pokemon.name}>
-                                <A href=".">
+                            <Li key={pokemon.name}
+                                type={pokemon.types[0].type.name}>
+                                <A href={`/pokemon/${pokemon.name}`} >
                                     <img src={pokemon.sprites.other['official-artwork'].front_default} alt={pokemon.name} />
                                     <h1>{pokemon.name}</h1>
                                 </A>

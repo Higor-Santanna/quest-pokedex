@@ -1,8 +1,11 @@
 import React from 'react'
+import { ButtonMore } from './style'
 
 const Button = ({setOffset, offset}) => {
     return (
-        <button onClick={() => setOffset(offset + 10)}>Carregar mais</button>
+        <ButtonMore>
+            <button onClick={() => setOffset(offset + 10)}>Load more</button>
+        </ButtonMore>
     )
 }
 

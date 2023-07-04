@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { themes } from "../../../styles/themes";
 
 const DivFilterAndSearch = styled.div`
 display: flex;
@@ -7,14 +6,26 @@ width: 100%;
 justify-content: space-between;
 padding: 20px 55px;
 
+div {
+    background-color: ${props => props.theme.backgroundSecudary};
+    padding: 2px 10px;
+    border-radius: 3px;
+    box-shadow: ${props => props.theme.boxShadow};
+}
+
+i {
+    background-color: ${props => props.theme.backgroundSecudary}; 
+    color: ${props => props.theme.textColor};
+    font-size: 14px;
+}
+
 input{
     background-color: ${props => props.theme.backgroundSecudary};
     border: none;
-    border-radius: 3px;
-    width: 280px;
+    width: 240px;
     height: 35px;
     padding: 10px;
-    color: white;
+    color: ${props => props.theme.textColor};
 }
 
 select{
@@ -25,6 +36,7 @@ select{
     width: 120px;
     font-weight: 300;
     font-size: 13px;
+    box-shadow: ${props => props.theme.boxShadow};
 }
 
 @media (max-width: 500px){

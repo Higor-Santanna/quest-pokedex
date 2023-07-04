@@ -18,8 +18,6 @@ const Ul = styled.ul`
 const Li = styled.li`
     width: 250px;
     height: 250px;
-    background-color: green;
-    border-radius: 5px;
     margin: 10px;
 
     :hover{
@@ -34,22 +32,21 @@ const A = styled.a`
     flex-direction: column;
     width: 100%;
     height: 100%;
+    border-radius: 5px;
     justify-content: center;
     align-items: center;
+    background-color: ${props => props.theme.backgroundSecudary};
 
     img{
         width: 150px;
-    }
-
-    img:hover{
-        filter: drop-shadow(15px 10px 5px rgba(0, 0, 0, 0.5));
-        transition: ease-in-out 0.4s;
+        background-color: ${props => props.theme.backgroundSecudary};
     }
 
     h1{
         text-align: center;
         text-transform: capitalize;
         font-size: 20px;
+        background-color: ${props => props.theme.backgroundSecudary};
     }
 `
 export { DivContainer, Ul, Li, A }

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { themes } from "../../../styles/themes";
 
 const DivLogoAndButton = styled.div`
 display: flex;
