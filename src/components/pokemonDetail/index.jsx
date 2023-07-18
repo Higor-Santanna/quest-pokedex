@@ -2,16 +2,19 @@ import { useState, useEffect } from "react";
 import { getDataPokemon } from "../../services/pokeApi";
 import { useParams } from "react-router-dom";
 import { ButtonTheme } from "../themeButton/themeButton";
-import { Header, DivNameTypeImage } from "./style"
+import { Header, DivNameImage, Link, H2, DivDados, DivContent } from "./style"
+import { themes } from "../../styles/themes/theme";
 
 const Pokemon = () => {
 
-    const [post, setPost] = useState({})
-    const [moves, setMoves] = useState([])
-    const [types, setTypes] = useState([])
-    const [image, setImage] = useState({})
-    const [abilitie, setAbilitie] = useState([])
+    const [post, setPost] = useState({});
+    const [moves, setMoves] = useState([]);
+    const [types, setTypes] = useState([]);
+    const [image, setImage] = useState({});
+    const [activeTab, setActiveTab] = useState(0);
     const { name } = useParams()
+    const tabs = ['Types', 'Moves', 'Abilities']
+    const [informacoesPokemon, setInformacoesPokemon] = useState([])
 
     useEffect(() => {
         async function fecthData() {
@@ -26,7 +29,7 @@ const Pokemon = () => {
             })
 
             const ability = post.abilities.map((abilitie) => abilitie.ability.url)
-            // console.log(ability)
+
 
             const abilitie = await Promise.all(ability.map(async (abilityUrl) => {
                 const abilityData = await fetch(abilityUrl)
@@ -34,17 +37,40 @@ const Pokemon = () => {
                 return await response
             }))
 
+            const abilityDescrition = abilitie.map((ability) => {
+                const englishDescrition = ability.effect_entries.filter((effect) => {
+                    return effect.language.name === 'en'
+                })
+                return englishDescrition
+            })
+            const description = abilityDescrition.map(effect => effect[0].short_effect)
+
             setPost(post)
             setImage(image)
             setMoves(moves)
             setTypes(types)
-            setAbilitie(abilitie)
+            const dadosApi = [
+                {
+                    content: types
+                },
+                {
+                    content: moves
+                },
+                {
+                    content: description
+                }
+            ]
+            setInformacoesPokemon(dadosApi)
         }
 
         fecthData()
     }, [])
 
-    console.log(post)
+    const information = informacoesPokemon[activeTab]?.content
+
+    const pokemonType = post.types?.[0].type.name;
+
+    const pokemonBackgroundColor = themes.pokemonBackground[pokemonType]
 
     return (
         <>
@@ -55,42 +81,34 @@ const Pokemon = () => {
                 </a>
                 <ButtonTheme></ButtonTheme>
             </Header>
-            <DivNameTypeImage>
-                <div>
-                    <h1>{post.name}</h1>
-                    {types.map(type => {
-                        return (
-                            <h3 key={type}>{type}</h3>
-                        )
-                    })}
-                </div>
+            <DivNameImage>
+                <h1>{post.name}</h1>
                 <img src={image} alt={post.name} />
-                {/* <h3 key={types}> {post.types[0].type.name} / {post.types[1].type.name}</h3> */}
-            </DivNameTypeImage>
+            </DivNameImage>
 
-            <div>
-                <div>
-                    <h2>Movies</h2>
-                    <ul>
-                        {moves.map(move => {
-                            return (
-                                <li key={move}>{move}</li>
-                            )
-                        })}
-                    </ul>
-                </div>
-                <div>
-                    <h2>Abilities</h2>
-                    {abilitie.map(ability => {
+
+            <DivDados>
+                <Link
+                    type={post.types?.[0].type.name}
+                    style={{ backgroundColor: pokemonBackgroundColor }}>
+                    {tabs.map((tab, index) => {
                         return (
-                            <>
-                                <h3>{ability.name}</h3>
-                                <p>{ability.effect_entries[0].effect} {ability.effect_entries[1].effect}</p>
-                            </>
+                            <H2
+                                onClick={() => setActiveTab(index)}
+                                className={`${activeTab === index ? "ativo" : ""}`}
+                                pokemonBackgroundColor = {pokemonBackgroundColor}> {tab}
+                            </H2>
                         )
                     })}
-                </div>
-            </div>
+                </Link>
+                <DivContent>
+                    {information?.map((index) => {
+                        return (
+                            <p>{index}</p>
+                        )
+                    })}
+                </DivContent>
+            </DivDados>
         </>
     )
 }

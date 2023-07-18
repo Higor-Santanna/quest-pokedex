@@ -14,8 +14,7 @@ export const Button = styled.button`
           font-weight: 600;
           display: flex;
           gap: 6px;
-          justify-content: center;
-          align-itens: center;
+          justify-content: center; 
           color: ${props => props.theme.textColor};
      }
 

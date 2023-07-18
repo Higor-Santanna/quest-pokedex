@@ -1,4 +1,4 @@
-export const Themes = {
+export const themes = {
     light: {
         theme: 'light',
         backgroundPrimary:  '#f5f5f5',
@@ -6,7 +6,8 @@ export const Themes = {
         textColor: 'hsl(200, 15%, 8%)',
         boxShadow: '2px 2px 2px hsl(0, 0%, 45%)',
         colorButton: 'hsl(197, 100%, 60%)',
-        colorCard: 'green'
+        colorCard: 'green',
+        backgroundContent: 'hsl(197, 100%, 60%)'
     },
 
     dark: {
@@ -16,9 +17,11 @@ export const Themes = {
         textColor: 'hsl(0, 0%, 100%)',
         boxShadow: '2px 2px 2px hsl(0, 0%, 10%)',
         colorButton: 'rgb(230, 224, 233)',
-        colorCard: 'green'
+        colorCard: 'green',
+        backgroundContent: '#f5f5f5'
     },
-    types: {
+
+    pokemonBackground: {
         normal: '#b7b6a3',
         fighting: '#c56d5b',
         flying: '#9aa7fa',
@@ -37,5 +40,5 @@ export const Themes = {
         dragon: '#8b7ceb',
         dark: '#8b6d5b',
         fairy: '#f1a7ec'
-    }
+    }   
 }

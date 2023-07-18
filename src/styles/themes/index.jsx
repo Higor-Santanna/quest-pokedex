@@ -1,16 +1,16 @@
 import { createContext, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { Themes } from "./theme";
+import { themes } from "./theme";
 
 export const ThemeContext = createContext({})
 
 export const CustomThemeProvider = ({children}) => {
-    const [theme, setTheme] = useState(Themes.dark) 
+    const [theme, setTheme] = useState(themes.light) 
 
     const toggleTheme = () => {
-        setTheme(theme === Themes.light ? Themes.dark : Themes.light)
+        setTheme(theme === themes.light ? themes.dark : themes.light)
     }
-    console.log(theme)
+
     return (
         <ThemeContext.Provider value={{theme, toggleTheme}}>
             <ThemeProvider theme={theme}>
